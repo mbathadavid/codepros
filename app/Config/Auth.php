@@ -253,7 +253,7 @@ class Auth extends ShieldAuth
      * The minimum length that a password must be to be accepted.
      * Recommended minimum value by NIST = 8 characters.
      */
-    public int $minimumPasswordLength = 8;
+    public int $minimumPasswordLength = 5;
 
     /**
      * --------------------------------------------------------------------
@@ -267,9 +267,9 @@ class Auth extends ShieldAuth
      * @var class-string<ValidatorInterface>[]
      */
     public array $passwordValidators = [
-        CompositionValidator::class,
+        // CompositionValidator::class,
         NothingPersonalValidator::class,
-        DictionaryValidator::class,
+        // DictionaryValidator::class,
         // PwnedValidator::class,
     ];
 
@@ -438,6 +438,13 @@ class Auth extends ShieldAuth
     public function loginRedirect(): string
     {
         $session = session();
+
+        if (auth()->user()->inGroup('admin')) {
+            return '/admin';
+        } elseif(auth()->user()->inGroup('writer')) {
+            return '/writer';
+        }
+
         $url     = $session->getTempdata('beforeLoginUrl') ?? setting('Auth.redirects')['login'];
 
         return $this->getUrl($url);
