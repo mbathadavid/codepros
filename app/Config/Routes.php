@@ -13,6 +13,7 @@ service('auth')->routes($routes);
 $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     //Dashboard Route
     $routes->get('/', 'Admin::index');
+    $routes->add('modules', 'AdminController::modules');
 
     // members
     $routes->group('members', ['namespace' => 'App\Modules\Members\Controllers'], function ($routes) {

@@ -175,6 +175,37 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `modules`;
+CREATE TABLE IF NOT EXISTS `modules` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `module_name` text DEFAULT NULL,
+  `module_path` text DEFAULT NULL,
+  `created_on` int(11) DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `modified_on` int(11) DEFAULT NULL,
+  `modified_by` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+DROP TABLE IF EXISTS `groups`;
+CREATE TABLE IF NOT EXISTS `groups` (
+  `id` int(9) NOT NULL AUTO_INCREMENT,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+ALTER TABLE `groups`
+	ADD COLUMN `name` TEXT NOT NULL AFTER `id`,
+	ADD COLUMN `description` TEXT NULL AFTER `name`,
+	ADD COLUMN `created_by` INT NULL DEFAULT NULL AFTER `description`,
+	ADD COLUMN `modified_by` INT NULL DEFAULT NULL AFTER `created_by`,
+	CHANGE COLUMN `created_at` `created_at` INT NULL DEFAULT NULL AFTER `modified_by`,
+	CHANGE COLUMN `updated_at` `updated_at` INT NULL DEFAULT NULL AFTER `created_at`;
+
+ALTER TABLE `groups`
+	ADD COLUMN `title` TEXT NULL AFTER `name`;
+
 -- Dumping data for table codepros.users: ~0 rows (approximately)
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
