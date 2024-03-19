@@ -15,10 +15,15 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'Admin::index');
     $routes->add('modules', 'AdminController::modules');
 
-    // members
-    $routes->group('members', ['namespace' => 'App\Modules\Members\Controllers'], function ($routes) {
-        $routes->add('index', 'Members::index');
-        $routes->add('create', 'Members::create');
+    //User Groups
+    $routes->group('groups', ['namespace' => 'App\Modules\Groups\Controllers'], function ($routes) {
+        $routes->add('add', 'Administrator::create');
+    });
+
+    //Users Management
+    $routes->group('users', ['namespace' => 'App\Modules\Users\Controllers'], function ($routes) {
+        $routes->add('/', 'Administrator::index');
+        $routes->add('add', 'Administrator::add');
     });
 
     

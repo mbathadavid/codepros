@@ -27,7 +27,7 @@ class Administrator extends AdministratorController
         $model = new Users_m();
         $data['admins'] = $model->get_admin_users();
 
-        return view('App\Modules\Users\Views\index', $data);
+        return view('App\Modules\Users\Views\Admin\index', $data);
     }
 
     //Index Function 
@@ -120,6 +120,6 @@ class Administrator extends AdministratorController
         $data['groups'] = $model->populate('groups','name','name');
         $data['perms'] = $perms;
 
-        return view('App\Modules\Users\Views\add', $data);
+        return view('App\Modules\Users\Views\Admin\add', $data);
     }
 }

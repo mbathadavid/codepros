@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Users\Controllers;
+namespace App\Modules\Groups\Controllers;
 
 use App\Controllers\AdministratorController;
 use App\Modules\Groups\Models\Groups_m;

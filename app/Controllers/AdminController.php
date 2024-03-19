@@ -66,8 +66,8 @@ class AdminController extends BaseController
 
                     // Check if the class exists and is not in nonmodules
 
-                    // if (class_exists($controllerClass) && !in_array($controllerFileName, $nonmodules)) {
-                    if (!in_array($controllerFileName, $nonmodules)) {
+                    if (class_exists($controllerClass) && !in_array($controllerFileName, $nonmodules)) {
+                    // if (!in_array($controllerFileName, $nonmodules)) {
                         // Check if the module exists in the database
                         $moduleExists = $admin->find_module($moduleName, $controllerClass);
                         if (!$moduleExists) {
