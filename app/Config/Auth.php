@@ -46,9 +46,12 @@ class Auth extends ShieldAuth
      * --------------------------------------------------------------------
      */
     public array $views = [
-        'login'                       => '\CodeIgniter\Shield\Views\login',
-        'register'                    => '\CodeIgniter\Shield\Views\register',
-        'layout'                      => '\CodeIgniter\Shield\Views\layout',
+        // 'login'                       => '\CodeIgniter\Shield\Views\login',
+        'login'                       => '\App\Views\Shield\login',
+        // 'register'                    => '\CodeIgniter\Shield\Views\register',
+        'register'                   => '\App\Views\Shield\register',
+        // 'layout'                      => '\CodeIgniter\Shield\Views\layout',
+        'layout'                      => '\App\Views\Shield\layout',
         'action_email_2fa'            => '\CodeIgniter\Shield\Views\email_2fa_show',
         'action_email_2fa_verify'     => '\CodeIgniter\Shield\Views\email_2fa_verify',
         'action_email_2fa_email'      => '\CodeIgniter\Shield\Views\Email\email_2fa_email',
@@ -429,7 +432,8 @@ class Auth extends ShieldAuth
      *
      * @var class-string<UserModel>
      */
-    public string $userProvider = UserModel::class;
+    // public string $userProvider = UserModel::class;
+    public string $userProvider = \App\Models\UserModel::class;
 
     /**
      * Returns the URL that a user should be redirected
@@ -441,8 +445,10 @@ class Auth extends ShieldAuth
 
         if (auth()->user()->inGroup('admin')) {
             return '/admin';
-        } elseif(auth()->user()->inGroup('writer')) {
-            return '/writer';
+        } elseif(auth()->user()->inGroup('techie')) {
+            return '/techie';
+        } elseif(auth()->user()->inGroup('customer')) {
+            return '/customer';
         }
 
         $url     = $session->getTempdata('beforeLoginUrl') ?? setting('Auth.redirects')['login'];
@@ -469,7 +475,9 @@ class Auth extends ShieldAuth
     {
         $url = setting('Auth.redirects')['register'];
 
-        return $this->getUrl($url);
+        // return $this->getUrl($url);
+
+        return '/login';
     }
 
     /**

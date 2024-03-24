@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace CodeIgniter\Shield\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\GeneralModel;
 use CodeIgniter\Events\Events;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\RequestInterface;
@@ -25,6 +26,7 @@ use CodeIgniter\Shield\Models\UserModel;
 use CodeIgniter\Shield\Traits\Viewable;
 use CodeIgniter\Shield\Validation\ValidationRules;
 use Psr\Log\LoggerInterface;
+use App\Models\GeneralModelModel;
 
 /**
  * Class RegisterController
@@ -93,6 +95,20 @@ class RegisterController extends BaseController
 
         $users = $this->getUserProvider();
 
+        $post = (object)$this->request->getPost();
+
+        //Prepare Dummy Username
+        $model = new GeneralModel();
+        $lastuser = $model->last_users();
+        $fieldarr = $this->request->getPost();
+
+        if (empty($post->username)) {
+            $luser = 'user'.$lastuser->id;
+            // echo $luser;
+            // $this->request->getPost()['username'] = $luser;
+            $fieldarr['username'] = $luser;
+        } 
+
         // Validate here first, since some things,
         // like the password, can only be validated properly here.
         $rules = $this->getValidationRules();
@@ -104,12 +120,18 @@ class RegisterController extends BaseController
         // Save the user
         $allowedPostFields = array_keys($rules);
         $user              = $this->getUserEntity();
-        $user->fill($this->request->getPost($allowedPostFields));
+        // $user->fill($this->request->getPost($allowedPostFields));
+        $user->fill($fieldarr);
 
         // Workaround for email only registration/login
         if ($user->username === null) {
             $user->username = null;
         }
+
+        // echo "<pre>";
+        //     print_r($user);
+        // echo "</pre>";
+        // die;
 
         try {
             $users->save($user);
@@ -121,8 +143,16 @@ class RegisterController extends BaseController
         $user = $users->findById($users->getInsertID());
 
         // Add to default group
-        $users->addToDefaultGroup($user);
+        // $users->addToDefaultGroup($user);
+        $user->addGroup($post->group);
 
+        //Register in respective group
+        if ($post->group === "techie") {
+            $ok = $model->insert_data('writers',['user_id' => $user->id]);
+        } elseif ($post->group === "customer") {
+            $ok = $model->insert_data('customers',['user_id' => $user->id]);
+        }
+        
         Events::trigger('register', $user);
 
         /** @var Session $authenticator */

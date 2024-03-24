@@ -13,21 +13,30 @@ service('auth')->routes($routes);
 $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     //Dashboard Route
     $routes->get('/', 'Admin::index');
+    $routes->add('modules', 'AdminController::modules');
 
-    // members
-    $routes->group('members', ['namespace' => 'App\Modules\Members\Controllers'], function ($routes) {
-        $routes->add('index', 'Members::index');
-        $routes->add('create', 'Members::create');
+    //User Groups
+    $routes->group('groups', ['namespace' => 'App\Modules\Groups\Controllers'], function ($routes) {
+        $routes->add('add', 'Administrator::create');
+    });
+
+    //Users Management
+    $routes->group('users', ['namespace' => 'App\Modules\Users\Controllers'], function ($routes) {
+        $routes->add('/', 'Administrator::index');
+        $routes->add('add', 'Administrator::add');
     });
 
     
 });
 
 //Writer Group Routes
-$routes->group('writer', ['filter' => 'auth'], function ($routes) {
+$routes->group('techie', ['filter' => 'auth'], function ($routes) {
     //Dashboard Route
     $routes->get('/', 'Writer::index');
+});
 
-    // members
-    
+//Customer Group Routes
+$routes->group('customer', ['filter' => 'auth'], function ($routes) {
+    //Dashboard Route
+    $routes->get('/', 'Writer::customer');
 });
