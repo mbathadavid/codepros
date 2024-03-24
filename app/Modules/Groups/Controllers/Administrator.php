@@ -68,6 +68,7 @@ class Administrator extends AdministratorController
         }
     
         $data['groups'] = $model->findAll();
+        $data['pagetitle'] = 'User Groups';
 
         return view('App\Modules\Groups\Views\index', $data);
     }

@@ -75,6 +75,14 @@ class GeneralModel extends Model
         return $this->db->table('profiles')->where('client', $client)->get()->getRow();
     }
 
- 
+    //Function to pull trhe last user
+    function last_users() {
+        return $this->db
+                    ->table('users')
+                    ->orderBy('id', 'DESC')
+                    ->limit(1)
+                    ->get()
+                    ->getRow();
+    }
  
 }

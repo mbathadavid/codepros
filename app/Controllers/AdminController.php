@@ -13,6 +13,7 @@ class AdminController extends BaseController
 
         
         // $data['permissions'] = $admin->generate_permissions();
+        
 
         return  view('admin\index', []);
     }

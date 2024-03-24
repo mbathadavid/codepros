@@ -1,180 +1,254 @@
-<div class="header">
-    <!-- navbar -->
-    <div class="navbar-custom navbar navbar-expand-lg">
-        <div class="container-fluid px-0">
-            <a class="navbar-brand d-block d-md-none" href="https://dashui.codescandy.com/dashuipro/index.html">
-                <img src="https://dashui.codescandy.com/dashuipro/assets/images/brand/logo/logo-2.svg" alt="Image">
-            </a>
+ <!-- Topbar Start -->
+ <div class="navbar-custom">
+                    <ul class="list-unstyled topnav-menu float-end mb-0">
 
+                        <li class="d-none d-lg-block">
+                            <form class="app-search">
+                                <div class="app-search-box">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Search..." id="top-search">
+                                        <button class="btn input-group-text" type="submit">
+                                            <i class="fe-search"></i>
+                                        </button>
+                                    </div>
+                                    <div class="dropdown-menu dropdown-lg" id="search-dropdown">
+                                        <!-- item-->
+                                        <div class="dropdown-header noti-title">
+                                            <h5 class="text-overflow mb-2">Found 22 results</h5>
+                                        </div>
+            
+                                        <!-- item-->
+                                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                            <i class="fe-home me-1"></i>
+                                            <span>Analytics Report</span>
+                                        </a>
+            
+                                        <!-- item-->
+                                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                            <i class="fe-aperture me-1"></i>
+                                            <span>How can I help you?</span>
+                                        </a>
+                            
+                                        <!-- item-->
+                                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                            <i class="fe-settings me-1"></i>
+                                            <span>User profile settings</span>
+                                        </a>
 
+                                        <!-- item-->
+                                        <div class="dropdown-header noti-title">
+                                            <h6 class="text-overflow mb-2 text-uppercase">Users</h6>
+                                        </div>
 
-            <a id="nav-toggle" href="#!" class="ms-auto ms-md-0 me-0 me-lg-3 ">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-text-indent-left text-muted" viewBox="0 0 16 16">
-                    <path d="M2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm.646 2.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L4.293 8 2.646 6.354a.5.5 0 0 1 0-.708zM7 6.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-                </svg></a>
+                                        <div class="notification-list">
+                                            <!-- item-->
+                                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                                <div class="d-flex align-items-start">
+                                                    <img class="d-flex me-2 rounded-circle" src="assets/images/users/user-2.jpg" alt="Generic placeholder image" height="32">
+                                                    <div class="w-100">
+                                                        <h5 class="m-0 font-14">Erwin E. Brown</h5>
+                                                        <span class="font-12 mb-0">UI Designer</span>
+                                                    </div>
+                                                </div>
+                                            </a>
 
-            <div class="d-none d-md-none d-lg-block">
-                <!-- Form -->
-                <form action="#">
+                                            <!-- item-->
+                                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                                <div class="d-flex align-items-start">
+                                                    <img class="d-flex me-2 rounded-circle" src="assets/images/users/user-5.jpg" alt="Generic placeholder image" height="32">
+                                                    <div class="w-100">
+                                                        <h5 class="m-0 font-14">Jacob Deo</h5>
+                                                        <span class="font-12 mb-0">Developer</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+            
+                                    </div> 
+                                </div>
+                            </form>
+                        </li>
+    
+                        <li class="dropdown d-inline-block d-lg-none">
+                            <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                <i class="fe-search noti-icon"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-lg dropdown-menu-end p-0">
+                                <form class="p-3">
+                                    <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+                                </form>
+                            </div>
+                        </li>
+            
+                        <li class="dropdown notification-list topbar-dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                <i class="fe-bell noti-icon"></i>
+                                <span class="badge bg-danger rounded-circle noti-icon-badge">9</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end dropdown-lg">
+    
+                                <!-- item-->
+                                <div class="dropdown-item noti-title">
+                                    <h5 class="m-0">
+                                        <span class="float-end">
+                                            <a href="#" class="text-dark">
+                                                <small>Clear All</small>
+                                            </a>
+                                        </span>Notification
+                                    </h5>
+                                </div>
+    
+                                <div class="noti-scroll" data-simplebar>
+    
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item active">
+                                        <div class="notify-icon">
+                                            <img src="assets/images/users/user-1.jpg" class="img-fluid rounded-circle" alt="" /> </div>
+                                        <p class="notify-details">Cristina Pride</p>
+                                        <p class="text-muted mb-0 user-msg">
+                                            <small>Hi, How are you? What about our next meeting</small>
+                                        </p>
+                                    </a>
+    
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <div class="notify-icon bg-primary">
+                                            <i class="mdi mdi-comment-account-outline"></i>
+                                        </div>
+                                        <p class="notify-details">Caleb Flakelar commented on Admin
+                                            <small class="text-muted">1 min ago</small>
+                                        </p>
+                                    </a>
+    
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <div class="notify-icon">
+                                            <img src="assets/images/users/user-4.jpg" class="img-fluid rounded-circle" alt="" /> </div>
+                                        <p class="notify-details">Karen Robinson</p>
+                                        <p class="text-muted mb-0 user-msg">
+                                            <small>Wow ! this admin looks good and awesome design</small>
+                                        </p>
+                                    </a>
+    
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <div class="notify-icon bg-warning">
+                                            <i class="mdi mdi-account-plus"></i>
+                                        </div>
+                                        <p class="notify-details">New user registered.
+                                            <small class="text-muted">5 hours ago</small>
+                                        </p>
+                                    </a>
+    
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <div class="notify-icon bg-info">
+                                            <i class="mdi mdi-comment-account-outline"></i>
+                                        </div>
+                                        <p class="notify-details">Caleb Flakelar commented on Admin
+                                            <small class="text-muted">4 days ago</small>
+                                        </p>
+                                    </a>
+    
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <div class="notify-icon bg-secondary">
+                                            <i class="mdi mdi-heart"></i>
+                                        </div>
+                                        <p class="notify-details">Carlos Crouch liked
+                                            <b>Admin</b>
+                                            <small class="text-muted">13 days ago</small>
+                                        </p>
+                                    </a>
+                                </div>
+    
+                                <!-- All-->
+                                <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
+                                    View all
+                                    <i class="fe-arrow-right"></i>
+                                </a>
+    
+                            </div>
+                        </li>
+    
+                        <li class="dropdown notification-list topbar-dropdown">
+                            <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                <img src="<?php echo base_url() ?>/assets/admin2/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
+                                <span class="pro-user-name ms-1">
+                                    Nowak <i class="mdi mdi-chevron-down"></i> 
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
+                                <!-- item-->
+                                <div class="dropdown-header noti-title">
+                                    <h6 class="text-overflow m-0">Welcome !</h6>
+                                </div>
+    
+                                <!-- item-->
+                                <a href="contacts-profile.html" class="dropdown-item notify-item">
+                                    <i class="fe-user"></i>
+                                    <span>My Account</span>
+                                </a>
+    
+                                <!-- item-->
+                                <a href="auth-lock-screen.html" class="dropdown-item notify-item">
+                                    <i class="fe-lock"></i>
+                                    <span>Lock Screen</span>
+                                </a>
+    
+                                <div class="dropdown-divider"></div>
+    
+                                <!-- item-->
+                                <a href="auth-logout.html" class="dropdown-item notify-item">
+                                    <i class="fe-log-out"></i>
+                                    <span>Logout</span>
+                                </a>
+    
+                            </div>
+                        </li>
+    
+                        <li class="dropdown notification-list">
+                            <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
+                                <i class="fe-settings noti-icon"></i>
+                            </a>
+                        </li>
+    
+                    </ul>
+    
+                    <!-- LOGO -->
+                    <div class="logo-box">
+                        <a href="index.html" class="logo logo-light text-center">
+                            <span class="logo-sm">
+                                <img src="<?php echo base_url() ?>/assets/admin2/images/logo-sm.png" alt="" height="22">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="<?php echo base_url() ?>/assets/admin2/images/logo-light.png" alt="" height="16">
+                            </span>
+                        </a>
+                        <a href="index.html" class="logo logo-dark text-center">
+                            <span class="logo-sm">
+                                <img src="<?php echo base_url() ?>/assets/admin2/images/logo-sm.png" alt="" height="22">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="<?php echo base_url() ?>/assets/admin2/images/logo-dark.png" alt="" height="16">
+                            </span>
+                        </a>
+                    </div>
 
-
-                    <div class="input-group ">
-                        <input class="form-control rounded-3" type="search" value="" id="searchInput" placeholder="Search">
-                        <span class="input-group-append">
-                            <button class="btn  ms-n10 rounded-0 rounded-end" type="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search text-dark">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                </svg>
+                    <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+                        <li>
+                            <button class="button-menu-mobile disable-btn waves-effect">
+                                <i class="fe-menu"></i>
                             </button>
-                        </span>
-                    </div>
-                </form>
+                        </li>
+    
+                        <li>
+                            <h4 class="page-title-main"><?php echo $pagetitle ?></h4>
+                        </li>
+            
+                    </ul>
+
+                    <div class="clearfix"></div> 
+               
             </div>
-            <!--Navbar nav -->
-            <ul class="navbar-nav navbar-right-wrap ms-lg-auto d-flex nav-top-wrap align-items-center ms-4 ms-lg-0">
-                <a href="#" class="form-check form-switch theme-switch btn btn-ghost btn-icon rounded-circle mb-0 ">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                    <label class="form-check-label" for="flexSwitchCheckDefault"></label>
-
-                </a>
-                </li>
-
-                <li class="dropdown stopevent ms-2">
-                    <a class="btn btn-ghost btn-icon rounded-circle" href="#!" role="button" id="dropdownNotification" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="icon-xs" data-feather="bell"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end" aria-labelledby="dropdownNotification">
-                        <div>
-                            <div class="border-bottom px-3 pt-2 pb-3 d-flex
-              justify-content-between align-items-center">
-                                <p class="mb-0 text-dark fw-medium fs-4">Notifications</p>
-                                <a href="#!" class="text-muted">
-                                    <span>
-                                        <i class="me-1 icon-xs" data-feather="settings"></i>
-                                    </span>
-                                </a>
-                            </div>
-                            <div data-simplebar style="height: 250px;">
-                                <!-- List group -->
-                                <ul class="list-group list-group-flush notification-list-scroll">
-                                    <!-- List group item -->
-                                    <li class="list-group-item bg-light">
-
-
-                                        <a href="#!" class="text-muted">
-                                            <h5 class=" mb-1">Rishi Chopra</h5>
-                                            <p class="mb-0">
-                                                Mauris blandit erat id nunc blandit, ac eleifend dolor pretium.
-                                            </p>
-                                        </a>
-
-
-
-                                    </li>
-                                    <!-- List group item -->
-                                    <li class="list-group-item">
-
-
-                                        <a href="#!" class="text-muted">
-                                            <h5 class=" mb-1">Neha Kannned</h5>
-                                            <p class="mb-0">
-                                                Proin at elit vel est condimentum elementum id in ante. Maecenas et sapien metus.
-                                            </p>
-                                        </a>
-
-
-
-                                    </li>
-                                    <!-- List group item -->
-                                    <li class="list-group-item">
-
-
-                                        <a href="#!" class="text-muted">
-                                            <h5 class=" mb-1">Nirmala Chauhan</h5>
-                                            <p class="mb-0">
-                                                Morbi maximus urna lobortis elit sollicitudin sollicitudieget elit vel pretium.
-                                            </p>
-                                        </a>
-
-
-
-                                    </li>
-                                    <!-- List group item -->
-                                    <li class="list-group-item">
-
-
-                                        <a href="#!" class="text-muted">
-                                            <h5 class=" mb-1">Sina Ray</h5>
-                                            <p class="mb-0">
-                                                Sed aliquam augue sit amet mauris volutpat hendrerit sed nunc eu diam.
-                                            </p>
-                                        </a>
-
-
-
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="border-top px-3 py-2 text-center">
-                                <a href="#!" class="text-inherit ">
-                                    View all Notifications
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <!-- List -->
-                <li class="dropdown ms-2">
-                    <a class="rounded-circle" href="#!" role="button" id="dropdownUser" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <div class="avatar avatar-md avatar-indicators avatar-online">
-                            <img alt="avatar" src="<?php echo base_url() ?>/assets/admin/images/avatar/avatar-11.jpg" class="rounded-circle">
-                        </div>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
-                        <div class="px-4 pb-0 pt-2">
-
-
-                            <div class="lh-1 ">
-                                <h5 class="mb-1"> John E. Grainger</h5>
-                                <a href="#!" class="text-inherit fs-6">View my profile</a>
-                            </div>
-                            <div class=" dropdown-divider mt-3 mb-2"></div>
-                        </div>
-
-                        <ul class="list-unstyled">
-
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="#!">
-                                    <i class="me-2 icon-xxs dropdown-item-icon" data-feather="user"></i>Edit
-                                    Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#!">
-                                    <i class="me-2 icon-xxs dropdown-item-icon" data-feather="activity"></i>Activity Log
-                                </a>
-
-
-                            </li>
-
-
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="#!">
-
-                                    <i class="me-2 icon-xxs dropdown-item-icon" data-feather="settings"></i>Settings
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="<?php echo base_url('logout') ?>">
-                                    <i class="me-2 icon-xxs dropdown-item-icon" data-feather="power"></i>Sign Out
-                                </a>
-                            </li>
-                        </ul>
-
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+            <!-- end Topbar -->

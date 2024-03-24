@@ -26,6 +26,7 @@ class Administrator extends AdministratorController
 
         $model = new Users_m();
         $data['admins'] = $model->get_admin_users();
+        $data['pagetitle'] = 'Users';
 
         return view('App\Modules\Users\Views\Admin\index', $data);
     }

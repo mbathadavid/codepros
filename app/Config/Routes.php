@@ -30,10 +30,13 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
 });
 
 //Writer Group Routes
-$routes->group('writer', ['filter' => 'auth'], function ($routes) {
+$routes->group('techie', ['filter' => 'auth'], function ($routes) {
     //Dashboard Route
     $routes->get('/', 'Writer::index');
+});
 
-    // members
-    
+//Customer Group Routes
+$routes->group('customer', ['filter' => 'auth'], function ($routes) {
+    //Dashboard Route
+    $routes->get('/', 'Writer::customer');
 });

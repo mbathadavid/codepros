@@ -206,6 +206,36 @@ ALTER TABLE `groups`
 ALTER TABLE `groups`
 	ADD COLUMN `title` TEXT NULL AFTER `name`;
 
+CREATE TABLE IF NOT EXISTS `writers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_on` int(11) DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `modified_on` int(11) DEFAULT NULL,
+  `modified_by` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `customers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_on` int(11) DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `modified_on` int(11) DEFAULT NULL,
+  `modified_by` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+ALTER TABLE `customers`
+	ADD COLUMN `user_id` INT(11) NOT NULL DEFAULT '0' AFTER `id`;
+
+ALTER TABLE `writers`
+	ADD COLUMN `user_id` INT(11) NOT NULL DEFAULT '0' AFTER `id`;
+
+ALTER TABLE `writers`
+	ADD COLUMN `status` INT(11) NOT NULL DEFAULT '2' AFTER `user_id`;
+
+ALTER TABLE `customers`
+	ADD COLUMN `status` INT(11) NOT NULL DEFAULT '1' AFTER `user_id`;
+
 -- Dumping data for table codepros.users: ~0 rows (approximately)
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;

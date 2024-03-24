@@ -8,4 +8,9 @@ class Writer extends BaseController
     {
         return view('Dashboards/writer');
     }
+
+    public function customer(): string
+    {
+        return view('Dashboards/customer');
+    }
 }
