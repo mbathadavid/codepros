@@ -26,6 +26,7 @@ use CodeIgniter\Shield\Authentication\Passwords\NothingPersonalValidator;
 use CodeIgniter\Shield\Authentication\Passwords\PwnedValidator;
 use CodeIgniter\Shield\Authentication\Passwords\ValidatorInterface;
 use CodeIgniter\Shield\Models\UserModel;
+use App\Models\GeneralModel;
 
 class Auth extends ShieldAuth
 {
@@ -446,7 +447,15 @@ class Auth extends ShieldAuth
         if (auth()->user()->inGroup('admin')) {
             return '/admin';
         } elseif(auth()->user()->inGroup('techie')) {
-            return '/techie';
+            //Check Status
+            $model = new GeneralModel();
+            $profile = $model->user_profile();
+            if ($profile->status == 2) {
+                return 'techie/profile/update';
+            } else {
+                return '/techie';
+            }
+            
         } elseif(auth()->user()->inGroup('customer')) {
             return '/customer';
         }

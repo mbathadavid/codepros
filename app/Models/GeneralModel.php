@@ -75,6 +75,13 @@ class GeneralModel extends Model
         return $this->db->table('profiles')->where('client', $client)->get()->getRow();
     }
 
+    //function user profile
+    function user_profile() {
+        $id = auth()->id();
+
+        return $this->db->table('writers')->where('user_id', $id)->get()->getRow();
+    }
+
     //Function to pull trhe last user
     function last_users() {
         return $this->db

@@ -25,6 +25,7 @@ class Filters extends BaseConfig
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         'auth' => \App\Filters\AuthFilter::class,
+        'restrict' => \App\Filters\RestrictFilter::class,
     ];
 
     /**
@@ -70,5 +71,8 @@ class Filters extends BaseConfig
         'auth' => [
             'before' => ['admin/*'], // Apply the 'auth' filter to routes under the 'admin' group.
         ],
+        'restrict' => [
+            'before' => ['techie/orders/*']
+        ]
     ];
 }

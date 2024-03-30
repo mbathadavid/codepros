@@ -8,6 +8,7 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use App\Models\GeneralModel;
 
 /**
  * Class BaseController
@@ -27,6 +28,7 @@ abstract class WriterController extends Controller
      * @var CLIRequest|IncomingRequest
      */
     protected $request;
+    protected $profile;
 
     /**
      * An array of helpers to be loaded automatically upon
@@ -52,6 +54,8 @@ abstract class WriterController extends Controller
         parent::initController($request, $response, $logger);
 
         // Preload any models, libraries, etc, here.
+        $model = new GeneralModel();
+        $this->profile = $model->user_profile();
 
         // E.g.: $this->session = \Config\Services::session();
     }
