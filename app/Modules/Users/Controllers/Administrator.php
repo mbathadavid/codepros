@@ -120,6 +120,7 @@ class Administrator extends AdministratorController
         $data['admins'] = $model->get_admin_users();
         $data['groups'] = $model->populate('groups','name','name');
         $data['perms'] = $perms;
+        $data['pagetitle'] = 'Users';
 
         return view('App\Modules\Users\Views\Admin\add', $data);
     }

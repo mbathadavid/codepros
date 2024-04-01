@@ -26,6 +26,19 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
         $routes->add('add', 'Administrator::add');
     });
 
+    //Areas of specialization
+    $routes->group('specializations', ['namespace' => 'App\Modules\Specializations\Controllers'], function ($routes) {
+        $routes->add('add', 'Administrator::create');
+        $routes->add('edit', 'Administrator::edit');
+    });
+
+    //Programming Languages
+    $routes->group('languages', ['namespace' => 'App\Modules\Languages\Controllers'], function ($routes) {
+        $routes->add('add', 'Administrator::create');
+        $routes->add('edit', 'Administrator::edit');
+        $routes->add('getFrameworks/(:any)', 'Administrator::getFrameworks/$1');
+        $routes->add('addframework', 'Administrator::addframework');
+    });
     
 });
 
@@ -44,6 +57,7 @@ $routes->group('techie', ['filter' => 'auth'], function ($routes) {
     $routes->group('orders', ['namespace' => 'App\Modules\Orders\Controllers','filter' => 'restrict'], function ($routes) {
         $routes->add('/', 'Writer::index');
         $routes->add('bid', 'Writer::bid');
+
     });
 
 });
