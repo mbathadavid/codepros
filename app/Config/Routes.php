@@ -48,13 +48,13 @@ $routes->group('techie', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'Writer::index');
 
     //Profile Management update_profile
-    $routes->group('profile', ['namespace' => 'App\Modules\Writers\Controllers'], function ($routes) {
+    $routes->group('profile', ['namespace' => 'App\Modules\Writers\Controllers','filter' => 'auth'], function ($routes) {
         $routes->add('/', 'Writer::index');
         $routes->add('update', 'Writer::update_profile');
     });
 
     //Order Routes
-    $routes->group('orders', ['namespace' => 'App\Modules\Orders\Controllers','filter' => 'restrict'], function ($routes) {
+    $routes->group('orders', ['namespace' => 'App\Modules\Orders\Controllers','filters' => 'auth,restrict'], function ($routes) {
         $routes->add('/', 'Writer::index');
         $routes->add('bid', 'Writer::bid');
 
@@ -66,4 +66,10 @@ $routes->group('techie', ['filter' => 'auth'], function ($routes) {
 $routes->group('customer', ['filter' => 'auth'], function ($routes) {
     //Dashboard Route
     $routes->get('/', 'Writer::customer');
+
+    //Orders
+    $routes->group('orders', ['namespace' => 'App\Modules\Orders\Controllers','filter' => 'auth'], function ($routes) {
+        $routes->add('/', 'Customer::index');
+        $routes->add('new', 'Customer::add');
+    });
 });

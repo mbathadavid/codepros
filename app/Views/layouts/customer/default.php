@@ -14,13 +14,15 @@
     <meta name="keywords" content="bootstrap, admin theme, admin dashboard, jquery, webpack, laravel-mix, template, responsive" />
     <meta name="author" content="Codepros" />
 
-    <title>siQtheme by 3M Square</title>
+    <title><?php echo isset($title) ? $title : '' ?></title>
 
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/writer/css/siqtheme.css">
 
     <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url() ?>assets/writer/img/apple-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="<?php echo base_url() ?>assets/writer/img/favicon.png">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/writer/css/pages/dashboard1.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/writer/select2/select2.min.css">
+    <script src="<?php echo base_url() ?>/assets/admin2/libs/jquery/jquery.min.js"></script>
 </head>
 
 <body class="theme-dark">
@@ -47,7 +49,7 @@
             <div class="row">
                 <div class="col">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="ti-home"></i> Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="ti-home"></i> <?php echo isset($pageheading) ? $pageheading : '' ?></a></li>
                     </ol>
                 </div>
             </div>
@@ -75,6 +77,12 @@
 
     <script src="<?php echo base_url() ?>assets/writer/scripts/siqtheme.js"></script>
     <script src="<?php echo base_url() ?>assets/writer/scripts/pages/dashboard1.js"></script>
+    <script src="<?php echo base_url() ?>assets/writer/select2/select2.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.select2').select2();
+        });
+    </script>
 </body>
 
 

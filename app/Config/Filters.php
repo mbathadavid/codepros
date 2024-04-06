@@ -69,7 +69,10 @@ class Filters extends BaseConfig
      */
     public array $filters = [
         'auth' => [
-            'before' => ['admin/*'], // Apply the 'auth' filter to routes under the 'admin' group.
+            'before' => [
+                'admin/*', // Apply the 'auth' filter to routes under the 'admin' group.
+                'techie/*',
+            ], 
         ],
         'restrict' => [
             'before' => ['techie/orders/*']
