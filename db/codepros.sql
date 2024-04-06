@@ -236,6 +236,53 @@ ALTER TABLE `writers`
 ALTER TABLE `customers`
 	ADD COLUMN `status` INT(11) NOT NULL DEFAULT '1' AFTER `user_id`;
 
+DROP TABLE IF EXISTS `specializations`;
+CREATE TABLE IF NOT EXISTS `specializations` (
+  `id` int(9) NOT NULL AUTO_INCREMENT,
+  `created_at` int NOT NULL,
+  `updated_at` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+ALTER TABLE `specializations`
+	ADD COLUMN `name` TEXT NULL AFTER `id`,
+	CHANGE COLUMN `created_at` `created_at` INT(11) NULL AFTER `name`,
+	CHANGE COLUMN `updated_at` `updated_at` INT(11) NULL AFTER `created_at`;
+
+ALTER TABLE `specializations`
+	ADD COLUMN `description` TEXT NULL DEFAULT NULL AFTER `name`;
+
+DROP TABLE IF EXISTS `languages`;
+CREATE TABLE IF NOT EXISTS `languages` (
+  `id` int(9) NOT NULL AUTO_INCREMENT,
+  `created_at` int NOT NULL,
+  `updated_at` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+ALTER TABLE `languages`
+	ADD COLUMN `name` INT(9) NULL DEFAULT '0' AFTER `id`,
+	CHANGE COLUMN `created_at` `created_at` INT(11) NULL AFTER `name`,
+	CHANGE COLUMN `updated_at` `updated_at` INT(11) NULL AFTER `created_at`;
+
+ALTER TABLE `languages`
+	CHANGE COLUMN `name` `name` TEXT NULL AFTER `id`;
+
+DROP TABLE IF EXISTS `frameworks`;
+CREATE TABLE IF NOT EXISTS `frameworks` (
+  `id` int(9) NOT NULL AUTO_INCREMENT,
+  `created_at` int NOT NULL,
+  `updated_at` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+ALTER TABLE `frameworks`
+	ADD COLUMN `lid` INT(9) NULL DEFAULT '0' AFTER `id`,
+	ADD COLUMN `name` TEXT NULL AFTER `lid`,
+	CHANGE COLUMN `created_at` `created_at` INT(11) NULL AFTER `name`,
+	CHANGE COLUMN `updated_at` `updated_at` INT(11) NULL AFTER `created_at`;
+
+
 -- Dumping data for table codepros.users: ~0 rows (approximately)
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;

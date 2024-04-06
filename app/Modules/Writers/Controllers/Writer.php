@@ -25,7 +25,10 @@ class Writer extends WriterController
 
     //Funnction
     function update_profile() {
-        echo "Complete Profile";
+
+        return view('App\Modules\Writers\Views\Writer\update_profile');
+       
     }
+
     
 }
