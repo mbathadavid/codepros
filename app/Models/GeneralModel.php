@@ -82,6 +82,11 @@ class GeneralModel extends Model
         return $this->db->table('writers')->where('user_id', $id)->get()->getRow();
     }
 
+    //Get Logged In user Group
+    function user_group($id) {
+        return $this->db->table('auth_groups_users')->where('user_id', $id)->get()->getRow();
+    }
+
     //Function to pull trhe last user
     function last_users() {
         return $this->db
