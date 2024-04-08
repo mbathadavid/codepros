@@ -25,7 +25,7 @@
     <script src="<?php echo base_url() ?>/assets/admin2/libs/jquery/jquery.min.js"></script>
 </head>
 
-<body class="theme-dark">
+<body class="theme-default">
     <div class="grid-wrapper sidebar-bg bg1">
 
         <!-- Theme switcher -->

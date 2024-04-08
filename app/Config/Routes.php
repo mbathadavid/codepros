@@ -16,24 +16,24 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->add('modules', 'AdminController::modules');
 
     //User Groups
-    $routes->group('groups', ['namespace' => 'App\Modules\Groups\Controllers'], function ($routes) {
+    $routes->group('groups', ['namespace' => 'App\Modules\Groups\Controllers','filter' => 'auth'], function ($routes) {
         $routes->add('add', 'Administrator::create');
     });
 
     //Users Management
-    $routes->group('users', ['namespace' => 'App\Modules\Users\Controllers'], function ($routes) {
+    $routes->group('users', ['namespace' => 'App\Modules\Users\Controllers','filter' => 'auth'], function ($routes) {
         $routes->add('/', 'Administrator::index');
         $routes->add('add', 'Administrator::add');
     });
 
     //Areas of specialization
-    $routes->group('specializations', ['namespace' => 'App\Modules\Specializations\Controllers'], function ($routes) {
+    $routes->group('specializations', ['namespace' => 'App\Modules\Specializations\Controllers','filter' => 'auth'], function ($routes) {
         $routes->add('add', 'Administrator::create');
         $routes->add('edit', 'Administrator::edit');
     });
 
     //Programming Languages
-    $routes->group('languages', ['namespace' => 'App\Modules\Languages\Controllers'], function ($routes) {
+    $routes->group('languages', ['namespace' => 'App\Modules\Languages\Controllers','filter' => 'auth'], function ($routes) {
         $routes->add('add', 'Administrator::create');
         $routes->add('edit', 'Administrator::edit');
         $routes->add('getFrameworks/(:any)', 'Administrator::getFrameworks/$1');
