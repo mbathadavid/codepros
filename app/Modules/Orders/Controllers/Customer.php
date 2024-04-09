@@ -39,6 +39,8 @@ class Customer extends CustomerController
         $data['assignmenttypes'] = $this->assignmenttypes;
         $data['assignmentcharges'] = $this->assignmentcharges;
         $data['perpageassignments'] = $this->perpageassignments;
+        $data['citationstyles'] = $this->citationstyles;
+        $data['domains'] = $this->gen->populate('specializations','id','name');
 
         return view('App\Modules\Orders\Views\Customer\add', $data);
     }
