@@ -21,6 +21,9 @@
     <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url() ?>assets/writer/img/apple-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="<?php echo base_url() ?>assets/writer/img/favicon.png">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/writer/css/pages/dashboard1.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/writer/css/pages/cp_datetime.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/writer/css/filepond/filepond.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/writer/css/filepond/filepond-plugin-image-preview.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/writer/select2/select2.min.css">
     <script src="<?php echo base_url() ?>/assets/admin2/libs/jquery/jquery.min.js"></script>
 </head>
@@ -77,12 +80,47 @@
 
     <script src="<?php echo base_url() ?>assets/writer/scripts/siqtheme.js"></script>
     <script src="<?php echo base_url() ?>assets/writer/scripts/pages/dashboard1.js"></script>
+    <script src="<?php echo base_url() ?>assets/writer/scripts/pages/cp_datetime.js"></script>
     <script src="<?php echo base_url() ?>assets/writer/select2/select2.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/writer/scripts/pages/fm_ckeditor_classic.js"></script>
+    <!-- include FilePond library -->
+    <script src="<?php echo base_url() ?>assets/writer/scripts/filepond/filepond.min.js"></script>
+
+    <!-- include FilePond plugins -->
+    <script src="<?php echo base_url() ?>assets/writer/scripts/filepond/filepond-plugin-image-preview.min.js"></script>
+
+    <!-- include FilePond jQuery adapter -->
+    <script src="<?php echo base_url() ?>assets/writer/scripts/filepond/filepond.jquery.js"></script>
+
     <script>
         $(document).ready(function(){
             $('.select2').select2();
         });
     </script>
+    <script>
+  $(function(){
+  
+    // First register any plugins
+    $.fn.filepond.registerPlugin(FilePondPluginImagePreview);
+
+    // Turn input element into a pond
+    $('.my-pond').filepond();
+
+    // Set allowMultiple property to true
+    $('.my-pond').filepond('allowMultiple', true);
+  
+    // Listen for addfile event
+    $('.my-pond').on('FilePond:addfile', function(e) {
+        console.log('file added event', e);
+    });
+
+    // Manually add a file using the addfile method
+    // $('.my-pond').first().filepond('addFile', 'index.html').then(function(file){
+    //   console.log('file added', file);
+    // });
+  
+  });
+</script>
 </body>
 
 

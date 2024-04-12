@@ -31,10 +31,10 @@
                             <div class="col-md-2 col-lg-2">
                                 <ul class="nav flex-column nav-pills">
                                     <li class="nav-item">
-                                        <a href="#tab4" data-toggle="tab" class="nav-link active">Assigment Details</a>
+                                        <a href="#tab4" data-toggle="tab" id="detailslink" class="nav-link active">Assigment Details</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#tab6" data-toggle="tab" class="nav-link">Instructions</a>
+                                        <a href="#tab6" data-toggle="tab" id="instructionslink" class="nav-link">Instructions</a>
                                     </li>
                                 </ul>
                             </div>
@@ -48,6 +48,7 @@
                                                     <?php
                                                     echo form_dropdown('assignmenttype', ['' => 'Select Assignment Type'] + $assignmenttypes, '', 'class="form-control select2" id="assignmenttype" required')
                                                     ?>
+                                                    <div class="invalid-tooltip">You must Select the Assignment Type</div>
                                                 </div>
                                                 <div class="d-none" id="pagesdiv">
                                                     <div class="row">
@@ -103,56 +104,88 @@
                                                 <div class="form-group">
                                                     <label class="col-form-label">Assignment Topic</label>
                                                     <?php
-                                                        echo form_input('topic', '', 'class="form-control" id="topic" required')
+                                                    echo form_input('topic', '', 'class="form-control" id="topic" required')
                                                     ?>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-form-label">Assignment Domain</label>
                                                     <?php
-                                                        echo form_dropdown('domain', ['' => 'Select Assignment Domain'] + $domains, '', 'class="form-control select2" id="domain"')
+                                                    echo form_dropdown('domain', ['' => 'Select Assignment Domain'] + $domains, '', 'class="form-control select2" id="domain"')
                                                     ?>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-form-label">Language</label>
                                                     <?php
-                                                        $languages = array(
-                                                            1 => 'English (US)',
-                                                            2 => 'English (UK)',
-                                                            3 => 'Spanish (ES)',
-                                                            4 => 'French (FR)',
-                                                            5 => 'Chinese (CH)'
-                                                        );
+                                                    $languages = array(
+                                                        1 => 'English (US)',
+                                                        2 => 'English (UK)',
+                                                        3 => 'Spanish (ES)',
+                                                        4 => 'French (FR)',
+                                                        5 => 'Chinese (CH)'
+                                                    );
 
-                                                        echo form_dropdown('language', ['' => 'Select Language'] + $languages, '', 'class="form-control select2" id="language"')
+                                                    echo form_dropdown('language', ['' => 'Select Language'] + $languages, '', 'class="form-control select2" id="language"')
                                                     ?>
                                                 </div>
                                                 <div class="row">
-                                                        <div class="col-lg-6 col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="">Date</label>
-                                                                <div class="input-group date">
-                                                                    <input type="text" class="form-control">
-                                                                    <div class="input-group-append">
-                                                                        <span class="input-group-text">
-                                                                            <i class="ti-calendar"></i>
-                                                                        </span>
-                                                                    </div>
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="">Date</label>
+                                                            <div class="input-group date">
+                                                                <input type="text" class="form-control">
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text">
+                                                                        <i class="ti-calendar"></i>
+                                                                    </span>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-6 col-md-6">
-
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="">Time</label>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control timepicker">
+                                                                <div class="input-group-append timepicker-btn">
+                                                                    <span class="input-group-text">
+                                                                        <i class="ti-time"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
                                                         </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <hr>
+                                        <div class="form-group float-right">
+                                            <a href="#" class="btn btn-success" id="toinstructions">Next Step</a>
+                                        </div>
                                     </div>
                                     <div class="tab-pane fade" id="tab6">
+                                        <div class="form-group">
+                                            <label for="">Instructions</label>
+                                            <textarea name="instructions" class="form-control" id="editor-1">
 
+                                            </textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Attach Files (if any)</label>
+                                            <input type="file" class="my-pond" name="filepond"/>
+                                        </div>
+                                        <hr>
+                                        <div class="form-group">
+                                            <a href="#" class="btn btn-success float-left" id="backtoinstructions">Back</a>
+                                            <a href="#" class="btn btn-success float-right" id="tonextstep">Next Step</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="card-footer">
+                        <h6 id="priceheading" class="d-none">Estimated Minimum Price : <b>$<span id="pricetxt"></span></b></h6>
+                        <small id="pricedes" class="d-none"><sup>(The price is subject to change based on waht you agree with the writer)</sup></small>
                     </div>
                 </div>
                 <!-- Tabs End -->
@@ -179,16 +212,25 @@
 
         $("#assignmenttype").change(function() {
             var asgselect = $(this).val();
-            console.log(asgselect);
-            console.log(arr[asgselect]);
+            // console.log(asgselect);
+            // console.log(arr[asgselect]);
 
-            if (perpages.indexOf(Number(asgselect)) !== -1) {
-                // console.log('Per Page');
-                $("#pagesdiv").removeClass('d-none');
+            if (asgselect === "") {
+                $("#priceheading").addClass('d-none');
+                $("#pricetxt").text('');
+                $("#pricedes").addClass('d-none');
             } else {
-                // console.log('Not per page');
-                $("#pagesdiv").addClass('d-none');
-
+                if (perpages.indexOf(Number(asgselect)) !== -1) {
+                    $("#pagesdiv").removeClass('d-none');
+                    $("#priceheading").removeClass('d-none');
+                    $("#pricetxt").text(arr[asgselect]);
+                    $("#pricedes").removeClass('d-none');
+                } else {
+                    $("#pagesdiv").addClass('d-none');
+                    $("#priceheading").removeClass('d-none');
+                    $("#pricetxt").text(arr[asgselect]);
+                    $("#pricedes").removeClass('d-none');
+                }
             }
         });
 
@@ -201,10 +243,16 @@
 
                 var spacing = $("#spacing").val();
 
+                //Calculate page pricing
+                var asg = $("#assignmenttype").val();
+                var cost = arr[asg];
+
                 if (parseInt(spacing) == 1) {
                     $("#wordcount").text((value - 1) * 275);
+                    $("#pricetxt").text((value - 1) * cost);
                 } else {
                     $("#wordcount").text((value - 1) * 550);
+                    $("#pricetxt").text(((value - 1) * 2) * cost);
                 }
             }
         });
@@ -217,10 +265,16 @@
 
                 var spacing = $("#spacing").val();
 
+                //Calculate page pricing
+                var asg = $("#assignmenttype").val();
+                var cost = arr[asg];
+
                 if (parseInt(spacing) == 1) {
                     $("#wordcount").text((value + 1) * 275);
+                    $("#pricetxt").text((value + 1) * cost);
                 } else {
                     $("#wordcount").text((value + 1) * 550);
+                    $("#pricetxt").text(((value + 1) * 2) * cost);
                 }
             }
         });
@@ -258,11 +312,34 @@
             var val = $(this).val();
             var pagecount = $("#pagecount").val();
 
+            var asg = $("#assignmenttype").val();
+            var cost = arr[asg];
+
             if (parseInt(val) == 1) {
                 $("#wordcount").text(pagecount * 275);
+                $("#pricetxt").text(pagecount * cost);
             } else {
                 $("#wordcount").text(pagecount * 550);
+                $("#pricetxt").text((pagecount * 2) * cost);
             }
+        });
+
+        $("#toinstructions").click(function(e){
+            e.preventDefault();
+
+            $("#detailslink").removeClass('active');
+            $("#instructionslink").addClass('active');
+            $("#tab4").removeClass('show active');
+            $("#tab6").addClass('show active');
+        })
+
+        $("#backtoinstructions").click(function(e){
+            e.preventDefault();
+
+            $("#instructionslink").removeClass('active');
+            $("#detailslink").addClass('active');
+            $("#tab6").removeClass('show active');
+            $("#tab4").addClass('show active');
         });
     });
 </script>
