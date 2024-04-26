@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <!-- Mirrored from siqtheme.siquang.com/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Mar 2024 13:46:25 GMT -->
 <head>
-    
-
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
@@ -21,11 +17,15 @@
     <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url() ?>assets/writer/img/apple-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="<?php echo base_url() ?>assets/writer/img/favicon.png">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/writer/css/pages/dashboard1.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/writer/css/pages/cp_datetime.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/writer/css/pages/quill.snow.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/writer/css/filepond/filepond.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/writer/css/filepond/filepond-plugin-image-preview.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/writer/select2/select2.min.css">
     <script src="<?php echo base_url() ?>/assets/admin2/libs/jquery/jquery.min.js"></script>
 </head>
 
-<body class="theme-dark">
+<body class="theme-default">
     <div class="grid-wrapper sidebar-bg bg1">
 
         <!-- Theme switcher -->
@@ -77,12 +77,58 @@
 
     <script src="<?php echo base_url() ?>assets/writer/scripts/siqtheme.js"></script>
     <script src="<?php echo base_url() ?>assets/writer/scripts/pages/dashboard1.js"></script>
+    <script src="<?php echo base_url() ?>assets/writer/scripts/pages/cp_datetime.js"></script>
     <script src="<?php echo base_url() ?>assets/writer/select2/select2.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/writer/scripts/pages/fm_ckeditor_classic.js"></script>
+    <!-- <script src="<?php echo base_url() ?>assets/writer/scripts/pages/fm_ckeditor_inline.js"></script> -->
+    <!-- <script src="<?php echo base_url() ?>assets/writer/scripts/pages/quill.js"></script> -->
+    <!-- <script src="<?php echo base_url() ?>assets/writer/scripts/pages/tinymce.min.js"></script> -->
+    <script src="<?php echo base_url() ?>assets/writer/scripts/pages/fm_control.js"></script>
+    <!-- include FilePond library -->
+    <script src="<?php echo base_url() ?>assets/writer/scripts/filepond/filepond.min.js"></script>
+
+    <!-- include FilePond plugins -->
+    <script src="<?php echo base_url() ?>assets/writer/scripts/filepond/filepond-plugin-image-preview.min.js"></script>
+
+    <!-- include FilePond jQuery adapter -->
+    <script src="<?php echo base_url() ?>assets/writer/scripts/filepond/filepond.jquery.js"></script>
+
     <script>
         $(document).ready(function(){
             $('.select2').select2();
         });
     </script>
+    <script>
+  $(function(){
+  
+    // First register any plugins
+    $.fn.filepond.registerPlugin(FilePondPluginImagePreview);
+
+    // Turn input element into a pond
+    $('.my-pond').filepond();
+
+     //Limit Files Selected
+     $('.my-pond').filepond({
+        acceptedFileTypes: ['image/*', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-powerpoint', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/pdf', 'application/zip', 'application/x-zip-compressed', 'multipart/x-zip'], // Specify the allowed file types
+        maxFileSize: '20MB', // Specify the maximum file size
+        name: 'files[]'
+    });
+
+    // Set allowMultiple property to true
+    $('.my-pond').filepond('allowMultiple', true);
+  
+    // Listen for addfile event
+    $('.my-pond').on('FilePond:addfile', function(e) {
+        console.log('file added event', e);
+    });
+
+    // Manually add a file using the addfile method
+    // $('.my-pond').first().filepond('addFile', 'index.html').then(function(file){
+    //   console.log('file added', file);
+    // });
+  
+  });
+</script>
 </body>
 
 

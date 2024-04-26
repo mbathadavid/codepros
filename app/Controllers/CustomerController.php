@@ -8,6 +8,7 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use App\Models\GeneralModel;
 
 /**
  * Class BaseController
@@ -39,6 +40,9 @@ abstract class CustomerController extends Controller
     protected $assignmenttypes;
     protected $assignmentcharges;
     protected $perpageassignments;
+    protected $citationstyles;
+    protected $domains;
+    protected $gen;
 
     /**
      * Be sure to declare properties for any property fetch you initialized.
@@ -98,6 +102,21 @@ abstract class CustomerController extends Controller
         ];
 
         $this->perpageassignments = [1,2,10,11];
+
+        $this->citationstyles = array(
+            1 => 'MLA',
+            2 => 'Chicago',
+            3 => 'APA 6th Edition',
+            4 => 'APA 7th Edition',
+            5 => 'ASA',
+            6 => 'Bluebook',
+            7 => 'Havard',
+            8 => 'IEEE',
+            9 > 'Other',
+            10 => 'Not Applicable'
+        );
+
+        $this->gen =  new \App\Models\GeneralModel();
 
         // E.g.: $this->session = \Config\Services::session();
     }
