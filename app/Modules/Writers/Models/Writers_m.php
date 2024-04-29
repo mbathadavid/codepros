@@ -19,7 +19,7 @@ class Writers_m extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['date', 'client', 'link', 'request', 'response', 'created_on'];
+    protected $allowedFields    = ['date', 'client', 'link', 'request', 'response','status', 'first_name', 'last_name', 'username', 'phone', 'profile_pic', 'country', 'language', 'spec', 'lang', 'framework', 'about', 'portifolio', 'linkedin', 'github', 't&c', 'created_on','created_by', 'modified_on', 'modified_by'];
 
     // Dates
     protected $useTimestamps = false;
@@ -88,6 +88,35 @@ function get_modules() {
 
     return $modules;
 }
+
+    function get_specializations()
+    {
+        $specs = $this->db->table('specializations')->orderBy('id', 'ASC')->get()->getResult();
+        return $specs;
+    }
+    function get_languages()
+    {
+        $lang = $this->db->table('languages')->orderBy('id', 'ASC')->get()->getResult();
+        return $lang;
+    }
+    function get_frameworks()
+    {
+        $frm = $this->db->table('frameworks')->orderBy('id', 'ASC')->get()->getResult();
+        return $frm;
+    }
+
+    public function updateprofile($userId, $data)
+    {
+       
+        $this->set($data)->where('user_id', $userId)->update();
+
+        return $this->db->affectedRows();
+    }
+    function writer_details($userId)
+    {
+        $writer = $this->db->table('writers')->where('user_id', $userId)->get()->getRow();
+        return $writer;
+    }
 
 
 }

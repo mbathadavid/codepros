@@ -37,7 +37,11 @@ abstract class WriterController extends Controller
      *
      * @var array
      */
-    protected $helpers = [];
+    protected $helpers = ['form'];
+    
+
+    protected $library = ['input'];
+
 
     /**
      * Be sure to declare properties for any property fetch you initialized.
@@ -56,6 +60,7 @@ abstract class WriterController extends Controller
         // Preload any models, libraries, etc, here.
         $model = new GeneralModel();
         $this->profile = $model->user_profile();
+        
 
         // E.g.: $this->session = \Config\Services::session();
     }
