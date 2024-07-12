@@ -4,9 +4,18 @@
 <?= $this->section('content') ?>
 
 <?php
-// echo "<pre>";
-// print_r($perpageassignments);
-// echo "</pre>";
+$noncategorizedtypes = [];
+
+foreach ($assignmenttypes as $category => $types) {
+    foreach ($types as $tkey => $type) {
+        $noncategorizedtypes[$tkey] = $type;
+    }
+}
+
+echo "<pre>";
+print_r($domains);
+echo "</pre>";
+
 ?>
 <div class="row">
     <div class="col">
@@ -36,7 +45,7 @@
                                 <ul class="nav flex-column nav-pills">
                                     <li class="nav-item">
                                         <!-- <a href="#tab4" data-toggle="tab" id="detailslink" class="nav-link active">Assigment Details</a> -->
-                                        <a href="#" id="detailslink" class="nav-link active">Assigment Details</a>
+                                        <a href="#" id="detailslink" class="nav-link active">Assignment Details</a>
                                     </li>
                                     <li class="nav-item">
                                         <!-- <a href="#tab6" data-toggle="tab" id="instructionslink" class="nav-link">Instructions</a> -->
@@ -49,10 +58,11 @@
                                     <div class="tab-pane fade show active" id="tab4">
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6">
+                                                <input type="hidden" name="price" id="pricefield" class="form-control">
                                                 <div class="form-group">
                                                     <label class="col-form-label">Assignment Type</label>
                                                     <?php
-                                                    echo form_dropdown('assignmenttype', ['' => 'Select Assignment Type'] + $assignmenttypes, '', 'class="form-control select2" id="assignmenttype" required')
+                                                        echo form_dropdown('assignmenttype', ['' => 'Select Assignment Type'] + $assignmenttypes, '', 'class="form-control select2" id="assignmenttype" required')
                                                     ?>
                                                     <div class="invalid-feedback">You must Select the Assignment type</div>
                                                 </div>
@@ -208,6 +218,33 @@
                                     <div class="tab-pane fade" id="tab7">
                                         <h5 class="text-center">Confirm Order Details</h5>
                                         <hr>
+                                        <div class="card">
+                                            <div class="card-header">
+
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <h5>Assignment Type : <b class="assigntypeval"></b></h5>
+                                                        <h5>Topic : <b class="topicval"></b></h5>
+                                                        <h5>Domain : <b class="domainval"></b></h5>
+                                                        <h5>Pages : <b class="pagesval"></b></h5>
+                                                        <h5>Spacing : <b class="spacingval"></b></h5>
+                                                        <h5>Sources : <b class="sourcesval"> </b></h5>
+                                                        <h5>Citation Style : <b class="citationval"></b></h5>
+                                                        <h5>Language : <b class="languageval"></b></h5>
+                                                        <h5>Deadline : </h5>
+                                                        <h5>Files Attached : </h5>
+                                                        <h5>Estimated Cost : <b class="costval"></b></h5>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <div class="instructionsval">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <a href="#" class="btn btn-success float-left" id="backtotab6">Back</a>
                                             <button type="submit" class="btn btn-success float-right">Place Order</button>
@@ -235,6 +272,12 @@
 
         var perpages = <?php echo json_encode($perpageassignments) ?>;
         var assignmentcharges = <?php echo json_encode($assignmentcharges) ?>;
+        var assignmenttypes = <?php echo json_encode($noncategorizedtypes) ?>; 
+        var domains = <?php echo json_encode($domains) ?>;
+        var languages = <?php echo json_encode($languages) ?>;
+        var citationstyles = <?php echo json_encode($citationstyles) ?>;
+        // console.log(assignmenttypes);
+        
         // console.log(assignmentcharges);
         // console.log(Object.values(assignmentcharges));
         const arr = [];
@@ -243,8 +286,39 @@
                 arr[key] = assignmentcharges[key];
             }
         }
-
         // console.log(arr);
+
+        //Convert assignmenttypes object into an array 
+        const typesarr = [];
+        for (const key in assignmenttypes) {
+            if (Object.prototype.hasOwnProperty.call(assignmenttypes, key)) {
+                typesarr[key] = assignmenttypes[key];
+            }
+        }
+        
+        //Convert Domains object into an array 
+        const domainsarr = [];
+        for (const key in domains) {
+            if (Object.prototype.hasOwnProperty.call(domains, key)) {
+                domainsarr[key] = domains[key];
+            }
+        }
+
+        //Convert Langauges object into an array 
+        const languagesarr = [];
+        for (const key in languages) {
+            if (Object.prototype.hasOwnProperty.call(languages, key)) {
+                languagesarr[key] = languages[key];
+            }
+        }
+
+        //Convert citationstyles object into an array 
+        const citationsarr = [];
+        for (const key in citationstyles) {
+            if (Object.prototype.hasOwnProperty.call(citationstyles, key)) {
+                citationsarr[key] = citationstyles[key];
+            }
+        }
 
         $("#assignmenttype").change(function() {
             var asgselect = $(this).val();
@@ -260,6 +334,7 @@
                     $("#pagesdiv").removeClass('d-none');
                     $("#priceheading").removeClass('d-none');
                     $("#pricetxt").text(arr[asgselect]);
+                    $("#pricefield").val(arr[asgselect]);
                     $("#pricedes").removeClass('d-none');
 
                     //Make page related mandatory
@@ -271,6 +346,7 @@
                     $("#pagesdiv").addClass('d-none');
                     $("#priceheading").removeClass('d-none');
                     $("#pricetxt").text(arr[asgselect]);
+                    $("#pricefield").val(arr[asgselect]);
                     $("#pricedes").removeClass('d-none');
 
                     //Make page related non-mandatory
@@ -298,9 +374,11 @@
                 if (parseInt(spacing) == 1) {
                     $("#wordcount").text((value - 1) * 275);
                     $("#pricetxt").text((value - 1) * cost);
+                    $("#pricefield").val((value - 1) * cost);
                 } else {
                     $("#wordcount").text((value - 1) * 550);
                     $("#pricetxt").text(((value - 1) * 2) * cost);
+                    $("#pricefield").val(((value - 1) * 2) * cost);
                 }
             }
         });
@@ -320,9 +398,11 @@
                 if (parseInt(spacing) == 1) {
                     $("#wordcount").text((value + 1) * 275);
                     $("#pricetxt").text((value + 1) * cost);
+                    $("#pricefield").val((value + 1) * cost);
                 } else {
                     $("#wordcount").text((value + 1) * 550);
                     $("#pricetxt").text(((value + 1) * 2) * cost);
+                    $("#pricefield").val(((value + 1) * 2) * cost);
                 }
             }
         });
@@ -366,9 +446,12 @@
             if (parseInt(val) == 1) {
                 $("#wordcount").text(pagecount * 275);
                 $("#pricetxt").text(pagecount * cost);
+                $("#pricefield").val(pagecount * cost);
+                
             } else {
                 $("#wordcount").text(pagecount * 550);
                 $("#pricetxt").text((pagecount * 2) * cost);
+                $("#pricefield").val((pagecount * 2) * cost);
             }
         });
 
@@ -415,6 +498,16 @@
                 $("#instructionslink").addClass('btn-danger');
             } else {
                 instructions = instructionsval;
+
+                //Show Values
+                $(".instructionsval").html(instructions);
+                $(".assigntypeval").text(typesarr[$("#assignmenttype").val()]);
+                $(".topicval").text($("#topic").val());
+                $(".costval").text($("#pricefield").val());
+                $(".domainval").text(domainsarr[$("#domain").val()]);
+                $(".languageval").text(languagesarr[$("#language").val()]);
+                $(".citationval").text(citationsarr[$("#citation").val()]);
+
                 $("#instructionsvalidatext").addClass('d-none');
                 $("#detailslink").removeClass('active');
                 $("#instructionslink").removeClass('btn-danger');
@@ -422,7 +515,8 @@
                 $("#tabsnav").addClass('d-none');
                 $("#tab4").removeClass('show active');
                 $("#tab6").removeClass('show active'); 
-                $("#tab7").addClass('show active')
+                $("#tab7").addClass('show active');
+                
             }
         });
 
