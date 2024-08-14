@@ -183,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `modules` (
   `created_on` int(11) DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `modified_on` int(11) DEFAULT NULL,
-  `modified_by` int(11) DEFAULT NULL,
+  `modified_by` int(11) DEFAULT NULL
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -281,6 +281,30 @@ ALTER TABLE `frameworks`
 	ADD COLUMN `name` TEXT NULL AFTER `lid`,
 	CHANGE COLUMN `created_at` `created_at` INT(11) NULL AFTER `name`,
 	CHANGE COLUMN `updated_at` `updated_at` INT(11) NULL AFTER `created_at`;
+
+  ALTER TABLE `writers`
+	ADD COLUMN `first_name` VARCHAR(50) NULL DEFAULT NULL AFTER `status`,
+	ADD COLUMN `last_name` VARCHAR(50) NULL DEFAULT NULL AFTER `first_name`,
+	ADD COLUMN `username` VARCHAR(50) NULL DEFAULT NULL AFTER `last_name`,
+	ADD COLUMN `phone` VARCHAR(50) NULL DEFAULT NULL AFTER `username`,
+	ADD COLUMN `profile_pic` VARCHAR(50) NULL DEFAULT NULL AFTER `phone`,
+	ADD COLUMN `country` VARCHAR(50) NULL DEFAULT NULL AFTER `profile_pic`,
+	ADD COLUMN `language` VARCHAR(50) NULL DEFAULT NULL AFTER `country`,
+	ADD COLUMN `about` VARCHAR(200) NULL DEFAULT NULL AFTER `language`,
+	ADD COLUMN `portifolio` VARCHAR(100) NULL DEFAULT NULL AFTER `about`,
+	ADD COLUMN `linkedin` VARCHAR(100) NULL DEFAULT NULL AFTER `portifolio`,
+	ADD COLUMN `github` VARCHAR(100) NULL DEFAULT NULL AFTER `linkedin`,
+	ADD COLUMN `t&c` VARCHAR(50) NULL DEFAULT NULL AFTER `github`;
+
+  ALTER TABLE `writers`
+	ADD COLUMN `spec` VARCHAR(200) NULL DEFAULT NULL AFTER `about`,
+	ADD COLUMN `lang` VARCHAR(200) NULL DEFAULT NULL AFTER `spec`,
+	ADD COLUMN `framework` VARCHAR(200) NULL DEFAULT NULL AFTER `lang`;
+
+  ALTER TABLE `writers`
+	CHANGE COLUMN `t&c` `tc` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci' AFTER `github`;
+
+
 
 
 -- Dumping data for table codepros.users: ~0 rows (approximately)

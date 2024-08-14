@@ -3,7 +3,7 @@
 use CodeIgniter\Router\RouteCollection;
 
 /**
- * @var RouteCollection $routes
+ * @var RouteCollection $route
  */
 $routes->get('/', 'Home::index');
 
@@ -51,7 +51,17 @@ $routes->group('techie', ['filter' => 'auth'], function ($routes) {
     $routes->group('profile', ['namespace' => 'App\Modules\Writers\Controllers','filter' => 'auth'], function ($routes) {
         $routes->add('/', 'Writer::index');
         $routes->add('update', 'Writer::update_profile');
+        $routes->add('submit', 'Writer::submit_profile');
+        
     });
+
+    //Payments account Routes
+    $routes->group('payments',
+        ['namespace' => 'App\Modules\Writers\Controllers', 'filter' => 'restrict'],
+        function ($routes) {
+        $routes->add('payment_accounts', 'Writer::payment_accounts');
+        }
+    );
 
     //Order Routes
     $routes->group('orders', ['namespace' => 'App\Modules\Orders\Controllers','filters' => 'auth,restrict'], function ($routes) {
