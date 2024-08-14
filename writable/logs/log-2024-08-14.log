@@ -1,0 +1,69 @@
+CRITICAL - 2024-08-14 17:30:19 --> Error: Class 'Locale' not found
+in SYSTEMPATH\CodeIgniter.php on line 218.
+ 1 FCPATH\index.php(67): CodeIgniter\CodeIgniter->initialize()
+CRITICAL - 2024-08-14 17:30:19 --> ErrorException: Uncaught Error: Class 'Locale' not found in E:\xampp\htdocs\codepros\vendor\codeigniter4\framework\system\Helpers\number_helper.php:137
+Stack trace:
+#0 E:\xampp\htdocs\codepros\vendor\codeigniter4\framework\system\Helpers\number_helper.php(56): format_number(6, 2, NULL, Array)
+#1 E:\xampp\htdocs\codepros\vendor\codeigniter4\framework\system\Debug\BaseExceptionHandler.php(152): number_to_size(6, 2)
+#2 E:\xampp\htdocs\codepros\app\Views\errors\html\error_exception.php(384): CodeIgniter\Debug\BaseExceptionHandler::describeMemory(6291456)
+#3 E:\xampp\htdocs\codepros\vendor\codeigniter4\framework\system\Debug\BaseExceptionHandler.php(258): include('E:\\xampp\\htdocs...')
+#4 E:\xampp\htdocs\codepros\vendor\codeigniter4\framework\system\Debug\BaseExceptionHandler.php(261): CodeIgniter\Debug\BaseExceptionHandler->CodeIgniter\Debug\{closure}()
+#5 E:\xampp\htdocs\codepros\vendor\codeigniter4\framework\system\Debug\ExceptionHandler.php(112): CodeIgniter\Debug\BaseExceptionHandler->render(Object(Error), 500, 'E:\\xampp\\
+【Previous Exception】
+Error
+Class 'Locale' not found
+#0 E:\xampp\htdocs\codepros\index.php(67): CodeIgniter\CodeIgniter->initialize()
+#1 {main}
+in SYSTEMPATH\Helpers\number_helper.php on line 137.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-08-14 17:31:29 --> Error: Class 'Locale' not found
+in SYSTEMPATH\CodeIgniter.php on line 218.
+ 1 FCPATH\index.php(67): CodeIgniter\CodeIgniter->initialize()
+CRITICAL - 2024-08-14 17:31:29 --> ErrorException: Uncaught Error: Class 'Locale' not found in E:\xampp\htdocs\codepros\vendor\codeigniter4\framework\system\Helpers\number_helper.php:137
+Stack trace:
+#0 E:\xampp\htdocs\codepros\vendor\codeigniter4\framework\system\Helpers\number_helper.php(56): format_number(6, 2, NULL, Array)
+#1 E:\xampp\htdocs\codepros\vendor\codeigniter4\framework\system\Debug\BaseExceptionHandler.php(152): number_to_size(6, 2)
+#2 E:\xampp\htdocs\codepros\app\Views\errors\html\error_exception.php(384): CodeIgniter\Debug\BaseExceptionHandler::describeMemory(6291456)
+#3 E:\xampp\htdocs\codepros\vendor\codeigniter4\framework\system\Debug\BaseExceptionHandler.php(258): include('E:\\xampp\\htdocs...')
+#4 E:\xampp\htdocs\codepros\vendor\codeigniter4\framework\system\Debug\BaseExceptionHandler.php(261): CodeIgniter\Debug\BaseExceptionHandler->CodeIgniter\Debug\{closure}()
+#5 E:\xampp\htdocs\codepros\vendor\codeigniter4\framework\system\Debug\ExceptionHandler.php(112): CodeIgniter\Debug\BaseExceptionHandler->render(Object(Error), 500, 'E:\\xampp\\
+【Previous Exception】
+Error
+Class 'Locale' not found
+#0 E:\xampp\htdocs\codepros\index.php(67): CodeIgniter\CodeIgniter->initialize()
+#1 {main}
+in SYSTEMPATH\Helpers\number_helper.php on line 137.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-08-14 17:31:30 --> Error: Class 'Locale' not found
+in SYSTEMPATH\CodeIgniter.php on line 218.
+ 1 FCPATH\index.php(67): CodeIgniter\CodeIgniter->initialize()
+CRITICAL - 2024-08-14 17:31:30 --> ErrorException: Uncaught Error: Class 'Locale' not found in E:\xampp\htdocs\codepros\vendor\codeigniter4\framework\system\Helpers\number_helper.php:137
+Stack trace:
+#0 E:\xampp\htdocs\codepros\vendor\codeigniter4\framework\system\Helpers\number_helper.php(56): format_number(4, 2, NULL, Array)
+#1 E:\xampp\htdocs\codepros\vendor\codeigniter4\framework\system\Debug\BaseExceptionHandler.php(152): number_to_size(4, 2)
+#2 E:\xampp\htdocs\codepros\app\Views\errors\html\error_exception.php(384): CodeIgniter\Debug\BaseExceptionHandler::describeMemory(4194304)
+#3 E:\xampp\htdocs\codepros\vendor\codeigniter4\framework\system\Debug\BaseExceptionHandler.php(258): include('E:\\xampp\\htdocs...')
+#4 E:\xampp\htdocs\codepros\vendor\codeigniter4\framework\system\Debug\BaseExceptionHandler.php(261): CodeIgniter\Debug\BaseExceptionHandler->CodeIgniter\Debug\{closure}()
+#5 E:\xampp\htdocs\codepros\vendor\codeigniter4\framework\system\Debug\ExceptionHandler.php(112): CodeIgniter\Debug\BaseExceptionHandler->render(Object(Error), 500, 'E:\\xampp\\
+【Previous Exception】
+Error
+Class 'Locale' not found
+#0 E:\xampp\htdocs\codepros\index.php(67): CodeIgniter\CodeIgniter->initialize()
+#1 {main}
+in SYSTEMPATH\Helpers\number_helper.php on line 137.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2024-08-14 18:32:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-14 18:32:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-14 18:32:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-14 18:33:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-14 18:33:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-14 18:33:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-14 18:34:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-14 18:34:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-14 18:34:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-14 18:34:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-14 18:34:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-14 18:34:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-14 18:34:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-14 18:36:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-14 18:36:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
