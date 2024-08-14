@@ -183,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `modules` (
   `created_on` int(11) DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `modified_on` int(11) DEFAULT NULL,
-  `modified_by` int(11) DEFAULT NULL,
+  `modified_by` int(11) DEFAULT NULL
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

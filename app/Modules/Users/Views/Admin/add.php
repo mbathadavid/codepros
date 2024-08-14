@@ -7,7 +7,7 @@
 echo form_open(current_url());
 
 echo "<pre>";
-print_r($groups);
+print_r($perms);
 echo "</pre>";
 ?>
 <div class="row">
