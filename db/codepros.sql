@@ -304,7 +304,36 @@ ALTER TABLE `frameworks`
   ALTER TABLE `writers`
 	CHANGE COLUMN `t&c` `tc` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci' AFTER `github`;
 
+CREATE TABLE IF NOT EXISTS `orders` (
+  `id` int(9) NOT NULL AUTO_INCREMENT,
+  `type` int(9) DEFAULT NULL,
+  `citation` int(9) DEFAULT NULL,
+  `spacing` int(9) DEFAULT NULL,
+  `topic` text DEFAULT NULL,
+  `domain` int(11) DEFAULT NULL,
+  `language` int(11) DEFAULT NULL,
+  `deadline` int(11) DEFAULT NULL,
+  `instructions` text DEFAULT NULL,
+  `estimateprice` int(11) DEFAULT NULL,
+  `pricepaid` int(11) DEFAULT NULL,
+  `paid` int(11) DEFAULT 2,
+  `status` int(11) DEFAULT 4,
+  `assignedto` int(11) DEFAULT NULL,
+  `created_at` int(11) DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_at` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
+CREATE TABLE IF NOT EXISTS `files` (
+  `id` int(9) NOT NULL AUTO_INCREMENT,
+  `order` int(9) DEFAULT NULL,
+  `path` text DEFAULT NULL,
+  `created_on` int(11) DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 
 -- Dumping data for table codepros.users: ~0 rows (approximately)
