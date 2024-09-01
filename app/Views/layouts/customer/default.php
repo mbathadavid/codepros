@@ -22,7 +22,16 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/writer/css/filepond/filepond.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/writer/css/filepond/filepond-plugin-image-preview.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/writer/select2/select2.min.css">
+
+    <!-- <link rel="stylesheet" href="<?php echo base_url() ?>assets/writer/scripts/dropzone/dropzone.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.css">
+
     <script src="<?php echo base_url() ?>/assets/admin2/libs/jquery/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
+
+    <script src="<?php echo base_url() ?>assets/writer/scripts/pages/tb_datatables.js"></script>
+    <!-- <script src="<?php echo base_url() ?>assets/writer/scripts/dropzone/dropzone.min.js"></script> -->
 </head>
 
 <body class="theme-default">
@@ -92,6 +101,7 @@
 
     <!-- include FilePond jQuery adapter -->
     <script src="<?php echo base_url() ?>assets/writer/scripts/filepond/filepond.jquery.js"></script>
+    
 
     <script>
         $(document).ready(function(){
@@ -99,35 +109,35 @@
         });
     </script>
     <script>
-  $(function(){
+//   $(function(){
   
-    // First register any plugins
-    $.fn.filepond.registerPlugin(FilePondPluginImagePreview);
+//     // First register any plugins
+//     $.fn.filepond.registerPlugin(FilePondPluginImagePreview);
 
-    // Turn input element into a pond
-    $('.my-pond').filepond();
+//     // Turn input element into a pond
+//     $('.my-pond').filepond();
 
-     //Limit Files Selected
-     $('.my-pond').filepond({
-        acceptedFileTypes: ['image/*', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-powerpoint', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/pdf', 'application/zip', 'application/x-zip-compressed', 'multipart/x-zip'], // Specify the allowed file types
-        maxFileSize: '20MB', // Specify the maximum file size
-        name: 'files[]'
-    });
+//      //Limit Files Selected
+//      $('.my-pond').filepond({
+//         acceptedFileTypes: ['application/mp4', 'application/mp3'], // Specify the allowed file types
+//         // maxFileSize: '20MB', // Specify the maximum file size
+//         name: 'files[]'
+//     });
 
-    // Set allowMultiple property to true
-    $('.my-pond').filepond('allowMultiple', true);
+//     // Set allowMultiple property to true
+//     $('.my-pond').filepond('allowMultiple', true);
   
-    // Listen for addfile event
-    $('.my-pond').on('FilePond:addfile', function(e) {
-        console.log('file added event', e);
-    });
+//     // Listen for addfile event
+//     $('.my-pond').on('FilePond:addfile', function(e) {
+//         console.log('file added event', e);
+//     });
 
-    // Manually add a file using the addfile method
-    // $('.my-pond').first().filepond('addFile', 'index.html').then(function(file){
-    //   console.log('file added', file);
-    // });
+//     // Manually add a file using the addfile method
+//     // $('.my-pond').first().filepond('addFile', 'index.html').then(function(file){
+//     //   console.log('file added', file);
+//     // });
   
-  });
+//   });
 </script>
 </body>
 

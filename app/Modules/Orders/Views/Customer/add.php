@@ -12,9 +12,9 @@ foreach ($assignmenttypes as $category => $types) {
     }
 }
 
-echo "<pre>";
-print_r($domains);
-echo "</pre>";
+// echo "<pre>";
+// print_r($domains);
+// echo "</pre>";
 
 ?>
 <div class="row">
@@ -206,8 +206,12 @@ echo "</pre>";
                                             <div class=""><b>Do not share any of your personal details (Phone,Email,Name, etc.)</b></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="">Attach Files (if any)</label>
-                                            <input type="file" class="my-pond" name="files[]" />
+                                            <!-- <label for="">Attach Files (if any)</label> -->
+                                            <!-- <input type="file" class="my-pond" name="files[]" /> -->
+                                            <div class="dropzone" id="myDropzone">
+                                                <div class="dz-message">Drag & drop your files or click to select</div>
+                                            </div>
+                                            <input type="file" name="filepond[]" id="fileInput" style="display: none;" multiple>
                                         </div>
                                         <hr>
                                         <div class="form-group">
@@ -266,6 +270,52 @@ echo "</pre>";
     </div>
 </div>
 
+<script>
+    Dropzone.autoDiscover = false;
+
+    // Initialize Dropzone
+    var myDropzone = new Dropzone("#myDropzone", {
+        url: "/", // Dummy URL since we're not actually uploading
+        autoProcessQueue: false,
+        uploadMultiple: true,
+        maxFilesize: 20000,
+        // acceptedFiles: "video/mp4,audio/mpeg",
+        acceptedFiles: "",
+        addRemoveLinks: true,
+
+        init: function() {
+            var dropzoneInstance = this;
+
+            // Trigger file input click on Dropzone click
+            this.element.addEventListener("pointerdown", function(event) {
+                if (!this.classList.contains('dropzone-disabled')) {
+                    // Add a class to disable further clicks temporarily
+                    this.classList.add('dropzone-disabled');
+                    document.getElementById("fileInput").click();
+                }
+            });
+
+            // Handle file input change
+            document.getElementById("fileInput").addEventListener("change", function(event) {
+                var files = event.target.files;
+
+                // Add each selected file to Dropzone
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    dropzoneInstance.addFile(file); // Adds file to Dropzone for previewing
+                }
+
+                // Remove the class to re-enable Dropzone clicking
+                dropzoneInstance.element.classList.remove('dropzone-disabled');
+            });
+
+            // Remove file from the input when removed from Dropzone
+            this.on("removedfile", function() {
+                document.getElementById("fileInput").value = "";
+            });
+        }
+    });
+</script>
 <script>
     $(document).ready(function() {
         var instructions = "";

@@ -53,4 +53,16 @@ class Orders_m extends Model
         return $this->db->insertID();
     }
 
+    //Get a customers Orders
+    function customer_orders($status) {
+        $list = $this->db
+                     ->table('orders')
+                    //  ->where('status',$status)
+                     ->where('created_by',auth()->user()->id)
+                     ->orderBy('id','DESC')
+                     ->get()
+                     ->getResult();
+
+        return $list;
+    }
 }

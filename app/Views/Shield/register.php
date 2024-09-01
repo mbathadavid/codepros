@@ -22,7 +22,7 @@
                     <input type="text" class="form-control" name="email" placeholder="<?= lang('Auth.email') ?>" value="<?= old('email') ?>" required>
                 </div>
                 <div class="form-group" hidden>
-                    <label class="label" for="email">Email Address</label>
+                    <label class="label" for="email">Username</label>
                     <input type="text" name="username" placeholder="<?= lang('Auth.username') ?>" value="<?= old('username') ?>" class="form-control" name="email" placeholder="<?= lang('Auth.email') ?>" value="<?= old('email') ?>">
                 </div>
                 <div class="form-group">

@@ -81,5 +81,6 @@ $routes->group('customer', ['filter' => 'auth'], function ($routes) {
     $routes->group('orders', ['namespace' => 'App\Modules\Orders\Controllers','filter' => 'auth'], function ($routes) {
         $routes->add('/', 'Customer::index');
         $routes->add('new', 'Customer::add');
+        $routes->add('invitebids/(:any)', 'Customer::inviteBids/$1');
     });
 });
